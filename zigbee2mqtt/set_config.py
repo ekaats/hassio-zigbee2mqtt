@@ -62,8 +62,8 @@ def main(options_path, data_path):
     
     if findDevices(data_path):
         # copy the devices from config path to the instance
-        source_file = open(findDevices(data_path)):
-        dest_file = open "/zigbee2mqtt-0.1.6/node_modules/devices.js" # todo: make version independent
+        source_file = open(findDevices(data_path))  
+        dest_file = open("/zigbee2mqtt-0.1.6/node_modules/devices.js") # todo: make version independent
         copyfile(source_file,dest_file)
             
        
