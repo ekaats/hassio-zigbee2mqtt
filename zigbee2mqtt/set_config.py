@@ -1,5 +1,6 @@
 import json
 import argparse
+from shutil import copyfile
 from pathlib import Path
 import yaml
 
@@ -46,11 +47,28 @@ class ConfigBuilder:
                 self.options.get("log_directory"))
             self.config["advanced"]["log_directory"] = log_dir
 
+def findDevices(data_path):
+    # Try to find the devices.js file. If found, return the full path, otherwise return None.
+    devices_path = data_path + "/devices.js"
+    if devices_path.is_file():
+        return devices_path
+    return None
+
 
 def main(options_path, data_path):
 
     config = dict()
     config_path = Path(data_path).joinpath('configuration.yaml')
+    
+    if findDevices(data_path):
+        # copy the devices from config path to the instance
+        source_file = open(findDevices(data_path)):
+        dest_file = open "/zigbee2mqtt-0.1.6/node_modules/devices.js" # todo: make version independent
+        copyfile(source_file,dest_file)
+            
+       
+        
+    
     if config_path.is_file():  # check if config file exists in data path
         print("[Info] Configuration file found. Will overwrite configurable \
               fields with values from add-on configuration")
