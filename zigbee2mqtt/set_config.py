@@ -63,7 +63,7 @@ def main(options_path, data_path):
     if findDevices(data_path):
         # copy the devices from config path to the instance
         source_file = open(findDevices(data_path))  
-        dest_file = open("node_modules/devices.js") # todo: make version independent
+        dest_file = open("/app/node_modules/zigbee-shephard-converters/devices.js") # todo: make version independent
         copyfile(source_file,dest_file)
             
        
