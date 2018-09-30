@@ -33,5 +33,5 @@
     "zigbee_shepherd_debug": "bool?",
     "rtscts": "bool?"
   },
-  "image": "dwelch2101/zigbee2mqtt-{arch}"
+  "image": "ekaats/zigbee2mqtt-{arch}"
 }
