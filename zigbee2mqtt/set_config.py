@@ -1,5 +1,6 @@
 import json
 import argparse
+from sys import stdout, stderr, exc_info
 from shutil import copyfile
 from pathlib import Path
 import yaml
@@ -62,10 +63,14 @@ def main(options_path, data_path):
     
     if findDevices(data_path):
         # copy the devices from config path to the instance
+        stdout.write("Found a devices.js file in /share/. This will overwrite the standard config")
         source_file = findDevices(data_path)
         dest_file = "/node_modules/zigbee-shephard-converters/devices.js"
-        copyfile(source_file,dest_file)
-            
+        try:
+            copyfile(source_file, dest_file)
+        except Exception:
+            stderr("Error:", exc_info()[0])
+
        
         
     
