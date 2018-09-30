@@ -49,7 +49,7 @@ class ConfigBuilder:
 
 def findDevices(data_path):
     # Try to find the devices.js file. If found, return the full path, otherwise return None.
-    devices_path = data_path + "/devices.js"
+    devices_path = Path(data_path).joinpath('devices.js')
     if devices_path.is_file():
         return devices_path
     return None
